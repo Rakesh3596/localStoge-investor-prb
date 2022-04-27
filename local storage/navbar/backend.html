@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navbar {
+            background-color: pink;
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 35px;
+            padding: 20px ;
+            margin-bottom: 30px;
+            
+        }
+        #navbar>div>a {
+            text-decoration: none;
+            color: black;
+
+        }
+        #form {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div><a href="frontend.html">Frontend</a> </div>
+        <div><a href="backend.html">Backend</a></div>
+    </div>
+    <form id="form">
+        <input type="text" placeholder="img URL" id="imgURl">
+        <input type="text" placeholder="name" id="name">
+        <input type="text" placeholder="role" id="role">
+        <input type="text" placeholder="logo" id="logo">
+        <input type="submit">
+    </form>
+    
+</body>
+</html>
+<script>
+    document.querySelector("#form")
+    .addEventListener("submit",formFun);
+
+    var arr=JSON.parse(localStorage.getItem("invData")) || []
+    function formFun(){
+        event.preventDefault();
+
+        var obj={
+            avtar: form.imgURl.value,
+            name: form.name.value,
+            role: form.role.value,
+            logo: form.logo.value
+        };
+        arr.push(obj);
+        console.log(arr);
+        localStorage.setItem("invData",JSON.stringify(arr))
+    }
+
+
+
+
+</script>

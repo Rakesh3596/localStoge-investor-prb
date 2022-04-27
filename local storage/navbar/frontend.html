@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #box {
+            width: 90%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            margin: auto;
+        }
+        p+img {
+            display: block;
+            width: 150px;
+            margin: auto;
+            margin-top: -10px;
+        }
+        h1 {
+            
+            text-align: center;
+            padding-top: 50px;
+        }
+        h3,p{
+            text-align: center;            
+
+        }
+        h3 {
+            margin-bottom: -10px;
+        }
+        #box>div {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Frontend</h1>
+    <div id="head">
+        <h1>Stratergic Investor</h1>
+    </div>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    var arr=JSON.parse(localStorage.getItem("invData"));
+    arr.map(function(el){
+        var card= document.createElement("div");        
+        var img = document.createElement("img");
+        img.setAttribute("src",el.avtar)
+        img.style.width="100%"
+        var name = document.createElement("h3");
+        name.innerText=el.name;
+        var pos= document.createElement("p");
+        pos.innerText=el.role;
+        var logo= document.createElement("img");
+        logo.setAttribute("src",el.logo)
+        document.querySelector("#box").append(card)
+        card.append(img,name,pos,logo)
+    })
+</script>
